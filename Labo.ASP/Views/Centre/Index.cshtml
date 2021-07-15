@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Labo.ASP.Models.CentreModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Liste des centres</h1>
+
+<p>
+    <a asp-action="Create">Nouveau centre (debug)</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>            
+            <th>
+               Nom
+            </th>
+            
+            <th>
+               Ville
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+
+            <td>
+                <a asp-controller="Centre"
+                   asp-action="Detail"
+                   asp-route-id="@item.Id"
+                   >@item.Name</a>
+                   
+            </td>
+            <td>
+                @item.Ville
+            </td>
+            <td>               
+
+            <td class="listIcons">
+                <a asp-controller="Centre"
+                   asp-action="Update"
+                   asp-route-id="@item.Id"><i class="update-icon fas fa-edit"></i></a>
+
+                <span> - </span>
+
+                <a asp-controller="Centre"
+                   asp-action="Delete"
+                   asp-route-id="@item.Id"
+                   class="delete-link"><i class="delete-icon fas fa-trash-alt"></i></a>
+            </td>
+           
+        </tr>
+}
+    </tbody>
+</table>
