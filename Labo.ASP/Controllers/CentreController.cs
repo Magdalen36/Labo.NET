@@ -15,18 +15,21 @@ namespace Labo.ASP.Controllers
         private readonly IService<AdressModel, AdressForm> _serviceAdress;
         private readonly IService<PersonnelModel, PersonnelForm> _servicePersonnel;
         private readonly IService<HeureOuvertureModel, HeureOuvertureForm> _serviceHeureOuverture;
+        private readonly IService<LotVaccinModel, LotVaccinForm> _serviceLotVaccin;
 
         public CentreController(
             IService<CentreModel, CentreForm> sc,
             IService<AdressModel, AdressForm> sa,
             IService<PersonnelModel, PersonnelForm> sp,
-            IService<HeureOuvertureModel, HeureOuvertureForm> sh
+            IService<HeureOuvertureModel, HeureOuvertureForm> sh,
+            IService<LotVaccinModel, LotVaccinForm> sl
             )
         {
             _serviceCentre = sc;
             _serviceAdress = sa;
             _servicePersonnel = sp;
             _serviceHeureOuverture = sh;
+            _serviceLotVaccin = sl;
         }
 
         public IActionResult Index()
@@ -38,7 +41,9 @@ namespace Labo.ASP.Controllers
         public IActionResult Detail([FromRoute] int id)
         {
             DetailCentreModel model = new DetailCentreModel();
-            
+
+            model.TypeVaccin = (_serviceLotVaccin as LotVaccinService).GetByCentreId(id);
+
             model.HeuresOuverture = (_serviceHeureOuverture as HeureOuvertureService).GetByCentreId(id);
             model.NameR = (_servicePersonnel as PersonnelService).GetNomResponsableById(id);
             

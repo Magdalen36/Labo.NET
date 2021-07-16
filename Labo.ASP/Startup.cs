@@ -34,6 +34,8 @@ namespace Labo.ASP
             services.AddScoped<IService<AdressModel, AdressForm>, AdressService>();
             services.AddScoped<IService<HeureOuvertureModel, HeureOuvertureForm>, HeureOuvertureService>();
             services.AddScoped<IService<PersonnelModel, PersonnelForm>, PersonnelService>();
+            services.AddScoped<IService<LotVaccinModel, LotVaccinForm>, LotVaccinService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

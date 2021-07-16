@@ -44,9 +44,9 @@ namespace Labo.ASP.Services
             else return null;
         }
 
-        public List<string> GetByCentreId(int id)
+        public Dictionary<string, string> GetByCentreId(int id)
         {
-            List<string> heures = new List<string>(); 
+            Dictionary<string,string> heures = new Dictionary<string, string>(); 
             string jour = "";
 
             IEnumerable<HeureOuverture> toFind = _dc.HeureOuvertures.Where(c => c.CentreId == id);            
@@ -64,7 +64,7 @@ namespace Labo.ASP.Services
                         case 7: jour = "Dimanche"; break;
                     }
 
-                    heures.Add(jour + " - " + "De " + item.HeureDebut + "h à " + item.HeureFin + "h ");
+                    heures.Add(jour, "De " + item.HeureDebut + "h à " + item.HeureFin + "h ");
                 }
             return heures;
         }

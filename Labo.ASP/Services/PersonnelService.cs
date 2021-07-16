@@ -2,6 +2,7 @@
 using Labo.ASP.Models.Forms;
 using Labo.DAL;
 using Labo.DAL.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,17 @@ namespace Labo.ASP.Services
 
         public IEnumerable<PersonnelModel> GetAll()
         {
-            throw new NotImplementedException();
+            IEnumerable<Personnel> personnels = _dc.Personnels.Include("Grade").Include("Centre");
+            return personnels.Select(p => new PersonnelModel
+            {
+                Id = p.Id, 
+                CentreId = p.CentreId, 
+                FirstName = p.FirstName, 
+                LastName = p.LastName, 
+                Inami = p.Inami, 
+                NomGrade = p.Grade.Name,
+                NomCentre = p.Centre.Name
+            });
         }
 
         public PersonnelForm GetById(int id)
