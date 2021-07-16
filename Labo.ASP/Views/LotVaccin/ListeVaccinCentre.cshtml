@@ -1,0 +1,113 @@
+﻿@model IEnumerable<Labo.ASP.Models.StockVaccinModel>
+
+@{
+    ViewData["Title"] = "ListeVaccinCentre";
+}
+
+<h1>Les lots de </h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuantiteEntree)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuantiteRestante)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateEntree)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateSortie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CentreId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameFournisseur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdAdressFournisseur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomRueF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumRueF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VilleF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaysF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodePostalF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameTypeVaccin)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantiteEntree)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantiteRestante)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateEntree)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateSortie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CentreId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameFournisseur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdAdressFournisseur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomRueF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumRueF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VilleF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaysF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodePostalF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameTypeVaccin)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

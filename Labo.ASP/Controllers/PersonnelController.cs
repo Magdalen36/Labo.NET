@@ -31,5 +31,6 @@ namespace Labo.ASP.Controllers
 
             return View(modelCentre);
         }
+
     }
 }
