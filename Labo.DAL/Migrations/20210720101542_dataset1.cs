@@ -2,7 +2,7 @@
 
 namespace Labo.DAL.Migrations
 {
-    public partial class datasetgradeEtTypeVaccin : Migration
+    public partial class dataset1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

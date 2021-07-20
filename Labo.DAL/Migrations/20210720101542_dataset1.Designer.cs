@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Labo.DAL.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210719143634_dataset-centre")]
-    partial class datasetcentre
+    [Migration("20210720101542_dataset1")]
+    partial class dataset1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -120,29 +120,6 @@ namespace Labo.DAL.Migrations
                         .IsUnique();
 
                     b.ToTable("Centre");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AdressId = 1,
-                            Name = "Namur Expo",
-                            ResponsableId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AdressId = 2,
-                            Name = "Centre Central",
-                            ResponsableId = 5
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AdressId = 3,
-                            Name = "Hall Saint-Servais",
-                            ResponsableId = 9
-                        });
                 });
 
             modelBuilder.Entity("Labo.DAL.Entities.Fournisseur", b =>
@@ -283,7 +260,7 @@ namespace Labo.DAL.Migrations
                     b.Property<DateTime>("DateEntree")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateSortie")
+                    b.Property<DateTime?>("DateSortie")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("FournisseurId")
@@ -347,8 +324,8 @@ namespace Labo.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<int>("PhoneNumber")
-                        .HasColumnType("int");
+                    b.Property<long>("PhoneNumber")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("RegistreNat")
                         .IsRequired()

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Labo.DAL.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210720073831_dataset2")]
-    partial class dataset2
+    [Migration("20210720101448_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -120,29 +120,6 @@ namespace Labo.DAL.Migrations
                         .IsUnique();
 
                     b.ToTable("Centre");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AdressId = 1,
-                            Name = "Namur Expo",
-                            ResponsableId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AdressId = 2,
-                            Name = "Centre Central",
-                            ResponsableId = 5
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AdressId = 3,
-                            Name = "Hall Saint-Servais",
-                            ResponsableId = 9
-                        });
                 });
 
             modelBuilder.Entity("Labo.DAL.Entities.Fournisseur", b =>
@@ -171,36 +148,6 @@ namespace Labo.DAL.Migrations
                         .IsUnique();
 
                     b.ToTable("Fournisseur");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AdressId = 199,
-                            FirstName = "Julie",
-                            LastName = "Edouard"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AdressId = 198,
-                            FirstName = "Sophie",
-                            LastName = "Dufranne"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AdressId = 197,
-                            FirstName = "Pierre",
-                            LastName = "Braboa"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            AdressId = 196,
-                            FirstName = "Max",
-                            LastName = "Vanden"
-                        });
                 });
 
             modelBuilder.Entity("Labo.DAL.Entities.Grade", b =>
@@ -217,28 +164,6 @@ namespace Labo.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Grade");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Médecin"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Infirmier"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Sécurité"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Bénévole"
-                        });
                 });
 
             modelBuilder.Entity("Labo.DAL.Entities.HeureOuverture", b =>
@@ -266,152 +191,6 @@ namespace Labo.DAL.Migrations
                     b.HasIndex("CentreId");
 
                     b.ToTable("HeureOuverture");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CentreId = 1,
-                            HeureDebut = 8,
-                            HeureFin = 20,
-                            Jour = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CentreId = 1,
-                            HeureDebut = 8,
-                            HeureFin = 20,
-                            Jour = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CentreId = 1,
-                            HeureDebut = 8,
-                            HeureFin = 20,
-                            Jour = 3
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CentreId = 1,
-                            HeureDebut = 8,
-                            HeureFin = 20,
-                            Jour = 4
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CentreId = 1,
-                            HeureDebut = 8,
-                            HeureFin = 20,
-                            Jour = 5
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CentreId = 1,
-                            HeureDebut = 8,
-                            HeureFin = 20,
-                            Jour = 6
-                        },
-                        new
-                        {
-                            Id = 7,
-                            CentreId = 1,
-                            HeureDebut = 8,
-                            HeureFin = 22,
-                            Jour = 7
-                        },
-                        new
-                        {
-                            Id = 8,
-                            CentreId = 2,
-                            HeureDebut = 7,
-                            HeureFin = 18,
-                            Jour = 1
-                        },
-                        new
-                        {
-                            Id = 9,
-                            CentreId = 2,
-                            HeureDebut = 7,
-                            HeureFin = 18,
-                            Jour = 2
-                        },
-                        new
-                        {
-                            Id = 10,
-                            CentreId = 2,
-                            HeureDebut = 7,
-                            HeureFin = 18,
-                            Jour = 4
-                        },
-                        new
-                        {
-                            Id = 11,
-                            CentreId = 2,
-                            HeureDebut = 7,
-                            HeureFin = 18,
-                            Jour = 5
-                        },
-                        new
-                        {
-                            Id = 12,
-                            CentreId = 2,
-                            HeureDebut = 7,
-                            HeureFin = 18,
-                            Jour = 6
-                        },
-                        new
-                        {
-                            Id = 13,
-                            CentreId = 2,
-                            HeureDebut = 7,
-                            HeureFin = 18,
-                            Jour = 7
-                        },
-                        new
-                        {
-                            Id = 14,
-                            CentreId = 3,
-                            HeureDebut = 8,
-                            HeureFin = 20,
-                            Jour = 1
-                        },
-                        new
-                        {
-                            Id = 15,
-                            CentreId = 3,
-                            HeureDebut = 8,
-                            HeureFin = 20,
-                            Jour = 2
-                        },
-                        new
-                        {
-                            Id = 16,
-                            CentreId = 3,
-                            HeureDebut = 8,
-                            HeureFin = 20,
-                            Jour = 3
-                        },
-                        new
-                        {
-                            Id = 17,
-                            CentreId = 3,
-                            HeureDebut = 8,
-                            HeureFin = 20,
-                            Jour = 4
-                        },
-                        new
-                        {
-                            Id = 18,
-                            CentreId = 3,
-                            HeureDebut = 8,
-                            HeureFin = 22,
-                            Jour = 5
-                        });
                 });
 
             modelBuilder.Entity("Labo.DAL.Entities.Injection", b =>
@@ -483,68 +262,6 @@ namespace Labo.DAL.Migrations
                     b.HasIndex("TypeVaccinId");
 
                     b.ToTable("LotVaccin");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CentreId = 1,
-                            DateEntree = new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FournisseurId = 1,
-                            QuantiteEntree = 20,
-                            QuantiteRestante = 20,
-                            TypeVaccinId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CentreId = 1,
-                            DateEntree = new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FournisseurId = 2,
-                            QuantiteEntree = 40,
-                            QuantiteRestante = 40,
-                            TypeVaccinId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CentreId = 2,
-                            DateEntree = new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FournisseurId = 3,
-                            QuantiteEntree = 60,
-                            QuantiteRestante = 60,
-                            TypeVaccinId = 3
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CentreId = 2,
-                            DateEntree = new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FournisseurId = 4,
-                            QuantiteEntree = 10,
-                            QuantiteRestante = 10,
-                            TypeVaccinId = 4
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CentreId = 3,
-                            DateEntree = new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FournisseurId = 1,
-                            QuantiteEntree = 30,
-                            QuantiteRestante = 30,
-                            TypeVaccinId = 1
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CentreId = 3,
-                            DateEntree = new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FournisseurId = 2,
-                            QuantiteEntree = 50,
-                            QuantiteRestante = 50,
-                            TypeVaccinId = 2
-                        });
                 });
 
             modelBuilder.Entity("Labo.DAL.Entities.Patient", b =>
@@ -667,28 +384,6 @@ namespace Labo.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TypeVaccin");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Moderna"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Pfizer"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Johnson & Johnson"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "AstraZeneca"
-                        });
                 });
 
             modelBuilder.Entity("Labo.DAL.Entities.CalendrierHeure", b =>

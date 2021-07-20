@@ -13,7 +13,7 @@ namespace Populate
 {
     public class PopulatePatient
     {
-        public void InsertRandomUser()
+        public void InsertRandomUser(int i)
         {
 
             using (HttpClient client = new HttpClient())
@@ -53,7 +53,7 @@ namespace Populate
                     Mail = model.Results[0].Email,
                     IndicMed = indicationsMedicales,                   
                     PhoneNumber = long.Parse(tel),
-                    AdressId = rand.Next(0,200)
+                    AdressId = i
                 };
 
                 DataContext dc = new DataContext();

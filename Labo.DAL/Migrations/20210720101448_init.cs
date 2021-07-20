@@ -101,7 +101,7 @@ namespace Labo.DAL.Migrations
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     RegistreNat = table.Column<string>(type: "nchar(11)", fixedLength: true, maxLength: 11, nullable: false),
                     Mail = table.Column<string>(type: "varchar(255)", unicode: false, maxLength: 255, nullable: false),
-                    PhoneNumber = table.Column<int>(type: "int", nullable: false),
+                    PhoneNumber = table.Column<long>(type: "bigint", nullable: false),
                     IndicMed = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     Password = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     Salt = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -196,7 +196,7 @@ namespace Labo.DAL.Migrations
                     QuantiteEntree = table.Column<int>(type: "int", nullable: false),
                     QuantiteRestante = table.Column<int>(type: "int", nullable: false),
                     DateEntree = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateSortie = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateSortie = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CentreId = table.Column<int>(type: "int", nullable: false),
                     FournisseurId = table.Column<int>(type: "int", nullable: false),
                     TypeVaccinId = table.Column<int>(type: "int", nullable: false)
