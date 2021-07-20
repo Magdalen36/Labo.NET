@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Labo.DAL.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210715121809_init")]
-    partial class init
+    [Migration("20210720073831_dataset2")]
+    partial class dataset2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,8 +28,8 @@ namespace Labo.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CodePostal")
-                        .HasColumnType("int");
+                    b.Property<long>("CodePostal")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("NomRue")
                         .IsRequired()
@@ -54,53 +54,6 @@ namespace Labo.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Adress");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CodePostal = 5000,
-                            NomRue = "rue de l'expo",
-                            NumRue = "17A",
-                            Pays = "Belgique",
-                            Ville = "Namur"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CodePostal = 5000,
-                            NomRue = "rue du Centre",
-                            NumRue = "17",
-                            Pays = "Belgique",
-                            Ville = "Namur"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CodePostal = 5002,
-                            NomRue = "rue à l'ouest",
-                            NumRue = "35",
-                            Pays = "Belgique",
-                            Ville = "Saint-Servais"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CodePostal = 5190,
-                            NomRue = "rue à l'est",
-                            NumRue = "17A",
-                            Pays = "Belgique",
-                            Ville = "Ham-sur-Sambre"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CodePostal = 6000,
-                            NomRue = "rue du pont",
-                            NumRue = "19",
-                            Pays = "Belgique",
-                            Ville = "Charleroi"
-                        });
                 });
 
             modelBuilder.Entity("Labo.DAL.Entities.CalendrierHeure", b =>
@@ -223,16 +176,30 @@ namespace Labo.DAL.Migrations
                         new
                         {
                             Id = 1,
-                            AdressId = 4,
+                            AdressId = 199,
                             FirstName = "Julie",
                             LastName = "Edouard"
                         },
                         new
                         {
                             Id = 2,
-                            AdressId = 5,
+                            AdressId = 198,
                             FirstName = "Sophie",
                             LastName = "Dufranne"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AdressId = 197,
+                            FirstName = "Pierre",
+                            LastName = "Braboa"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AdressId = 196,
+                            FirstName = "Max",
+                            LastName = "Vanden"
                         });
                 });
 
@@ -492,7 +459,7 @@ namespace Labo.DAL.Migrations
                     b.Property<DateTime>("DateEntree")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateSortie")
+                    b.Property<DateTime?>("DateSortie")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("FournisseurId")
@@ -523,10 +490,9 @@ namespace Labo.DAL.Migrations
                             Id = 1,
                             CentreId = 1,
                             DateEntree = new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateSortie = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FournisseurId = 1,
-                            QuantiteEntree = 200,
-                            QuantiteRestante = 0,
+                            QuantiteEntree = 20,
+                            QuantiteRestante = 20,
                             TypeVaccinId = 1
                         },
                         new
@@ -534,10 +500,9 @@ namespace Labo.DAL.Migrations
                             Id = 2,
                             CentreId = 1,
                             DateEntree = new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateSortie = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FournisseurId = 2,
-                            QuantiteEntree = 400,
-                            QuantiteRestante = 0,
+                            QuantiteEntree = 40,
+                            QuantiteRestante = 40,
                             TypeVaccinId = 2
                         },
                         new
@@ -545,10 +510,9 @@ namespace Labo.DAL.Migrations
                             Id = 3,
                             CentreId = 2,
                             DateEntree = new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateSortie = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FournisseurId = 1,
-                            QuantiteEntree = 600,
-                            QuantiteRestante = 0,
+                            FournisseurId = 3,
+                            QuantiteEntree = 60,
+                            QuantiteRestante = 60,
                             TypeVaccinId = 3
                         },
                         new
@@ -556,10 +520,9 @@ namespace Labo.DAL.Migrations
                             Id = 4,
                             CentreId = 2,
                             DateEntree = new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateSortie = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FournisseurId = 2,
-                            QuantiteEntree = 100,
-                            QuantiteRestante = 0,
+                            FournisseurId = 4,
+                            QuantiteEntree = 10,
+                            QuantiteRestante = 10,
                             TypeVaccinId = 4
                         },
                         new
@@ -567,10 +530,9 @@ namespace Labo.DAL.Migrations
                             Id = 5,
                             CentreId = 3,
                             DateEntree = new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateSortie = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FournisseurId = 1,
-                            QuantiteEntree = 300,
-                            QuantiteRestante = 0,
+                            QuantiteEntree = 30,
+                            QuantiteRestante = 30,
                             TypeVaccinId = 1
                         },
                         new
@@ -578,10 +540,9 @@ namespace Labo.DAL.Migrations
                             Id = 6,
                             CentreId = 3,
                             DateEntree = new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateSortie = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FournisseurId = 2,
-                            QuantiteEntree = 500,
-                            QuantiteRestante = 0,
+                            QuantiteEntree = 50,
+                            QuantiteRestante = 50,
                             TypeVaccinId = 2
                         });
                 });
@@ -624,8 +585,8 @@ namespace Labo.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<int>("PhoneNumber")
-                        .HasColumnType("int");
+                    b.Property<long>("PhoneNumber")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("RegistreNat")
                         .IsRequired()
@@ -690,116 +651,6 @@ namespace Labo.DAL.Migrations
                     b.HasIndex("GradeId");
 
                     b.ToTable("Personnel");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CentreId = 1,
-                            FirstName = "Pierre",
-                            GradeId = 1,
-                            Inami = 12312312312L,
-                            LastName = "Wasnaire"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CentreId = 1,
-                            FirstName = "Jean",
-                            GradeId = 2,
-                            Inami = 12312312312L,
-                            LastName = "Jacques"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CentreId = 1,
-                            FirstName = "Marie",
-                            GradeId = 3,
-                            Inami = 0L,
-                            LastName = "Dupont"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CentreId = 1,
-                            FirstName = "Edouard",
-                            GradeId = 4,
-                            Inami = 0L,
-                            LastName = "Perot"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CentreId = 2,
-                            FirstName = "Pol",
-                            GradeId = 1,
-                            Inami = 12312312317L,
-                            LastName = "Wasnaire"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CentreId = 2,
-                            FirstName = "Jean",
-                            GradeId = 2,
-                            Inami = 12312312319L,
-                            LastName = "Poarr"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            CentreId = 2,
-                            FirstName = "Marie",
-                            GradeId = 3,
-                            Inami = 0L,
-                            LastName = "Durand"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            CentreId = 2,
-                            FirstName = "Josef",
-                            GradeId = 4,
-                            Inami = 0L,
-                            LastName = "quier"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            CentreId = 3,
-                            FirstName = "Pierre",
-                            GradeId = 1,
-                            Inami = 12312312311L,
-                            LastName = "moraud"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            CentreId = 3,
-                            FirstName = "Maud",
-                            GradeId = 2,
-                            Inami = 12312312318L,
-                            LastName = "Perot"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            CentreId = 3,
-                            FirstName = "Justine",
-                            GradeId = 3,
-                            Inami = 0L,
-                            LastName = "Renson"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            CentreId = 3,
-                            FirstName = "Patricia",
-                            GradeId = 4,
-                            Inami = 0L,
-                            LastName = "Delrio"
-                        });
                 });
 
             modelBuilder.Entity("Labo.DAL.Entities.TypeVaccin", b =>

@@ -23,8 +23,8 @@ namespace Labo.ASP.Models.Forms
         public string Ville { get; set; }
 
         [Required(ErrorMessage = "Ce champs est requis")]
-        [MaxLength(5, ErrorMessage = "Le champs doit faire maximum 5 caractères.")]
-        public int CodePostal { get; set; }
+        [MaxLength(10, ErrorMessage = "Le champs doit faire maximum 10 caractères.")]
+        public long CodePostal { get; set; }
 
         [Required(ErrorMessage = "Ce champs est requis")]
         [MaxLength(30, ErrorMessage = "Le champs doit faire maximum 30 caractères.")]

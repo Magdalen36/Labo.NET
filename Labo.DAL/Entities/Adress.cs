@@ -13,7 +13,7 @@ namespace Labo.DAL.Entities
         public string NumRue { get; set; }
         public string Ville { get; set; }
         public string Pays { get; set; }
-        public int CodePostal { get; set; }
+        public long CodePostal { get; set; }
 
         public virtual Fournisseur Fournisseur { get; set; }
         public virtual Patient Patient { get; set; }

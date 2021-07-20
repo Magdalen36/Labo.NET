@@ -5,7 +5,13 @@ VisualStudioVersion = 16.0.31229.75
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Labo.DAL", "Labo.DAL\Labo.DAL.csproj", "{8A43FDD4-B588-46C1-A903-53C4225DD074}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labo.ASP", "Labo.ASP\Labo.ASP.csproj", "{0AAF4321-576F-4D2F-9102-3E9986756B95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Labo.ASP", "Labo.ASP\Labo.ASP.csproj", "{0AAF4321-576F-4D2F-9102-3E9986756B95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Populate", "Populate\Populate.csproj", "{D99FC369-9931-4F22-A8B2-FB867B054455}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0AAF4321-576F-4D2F-9102-3E9986756B95} = {0AAF4321-576F-4D2F-9102-3E9986756B95}
+		{8A43FDD4-B588-46C1-A903-53C4225DD074} = {8A43FDD4-B588-46C1-A903-53C4225DD074}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,10 @@ Global
 		{0AAF4321-576F-4D2F-9102-3E9986756B95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AAF4321-576F-4D2F-9102-3E9986756B95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AAF4321-576F-4D2F-9102-3E9986756B95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D99FC369-9931-4F22-A8B2-FB867B054455}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D99FC369-9931-4F22-A8B2-FB867B054455}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D99FC369-9931-4F22-A8B2-FB867B054455}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D99FC369-9931-4F22-A8B2-FB867B054455}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

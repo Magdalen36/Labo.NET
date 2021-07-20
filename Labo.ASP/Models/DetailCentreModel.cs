@@ -12,7 +12,7 @@ namespace Labo.ASP.Models
         public string NumRue { get; set; }
         public string Ville { get; set; }
         public string Pays { get; set; }
-        public int CodePostal { get; set; }
+        public long CodePostal { get; set; }
 
         public string NameR { get; set; }
 

@@ -14,8 +14,10 @@ namespace Labo.DAL.DataSet
         public void Configure(EntityTypeBuilder<Fournisseur> builder)
         {
             builder.HasData(
-                new Fournisseur { Id = 1,FirstName = "Julie", LastName = "Edouard", AdressId = 4},
-                new Fournisseur { Id = 2,FirstName = "Sophie", LastName = "Dufranne", AdressId = 5}
+                new Fournisseur { Id = 1,FirstName = "Julie", LastName = "Edouard", AdressId = 199},
+                new Fournisseur { Id = 2,FirstName = "Sophie", LastName = "Dufranne", AdressId = 198},
+                new Fournisseur { Id = 3,FirstName = "Pierre", LastName = "Braboa", AdressId = 197},
+                new Fournisseur { Id = 4,FirstName = "Max", LastName = "Vanden", AdressId = 196}
                 );
         }
     }

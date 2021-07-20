@@ -14,7 +14,7 @@ namespace Labo.DAL.Entities
         public DateTime BirthDate { get; set; }
         public string RegistreNat { get; set; }
         public string Mail { get; set; }
-        public int PhoneNumber { get; set; }
+        public long PhoneNumber { get; set; }
         public string IndicMed { get; set; }
         public byte[] Password { get; set; }
         public string Salt { get; set; }

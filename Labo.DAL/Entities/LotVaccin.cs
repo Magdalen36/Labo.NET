@@ -12,7 +12,7 @@ namespace Labo.DAL.Entities
         public int QuantiteEntree { get; set; }
         public int QuantiteRestante { get; set; }
         public DateTime DateEntree { get; set; }
-        public DateTime DateSortie { get; set; }
+        public DateTime? DateSortie { get; set; }
 
         public int CentreId { get; set; }
         public virtual Centre Centre { get; set; }
