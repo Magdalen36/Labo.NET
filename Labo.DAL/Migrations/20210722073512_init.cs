@@ -227,6 +227,7 @@ namespace Labo.DAL.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Heure = table.Column<int>(type: "int", nullable: false),
                     Time = table.Column<int>(type: "int", nullable: false),
                     CalendrierJourId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -276,6 +277,28 @@ namespace Labo.DAL.Migrations
                         principalTable: "Personnel",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Grade",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Médecin" },
+                    { 2, "Infirmier" },
+                    { 3, "Sécurité" },
+                    { 4, "Bénévole" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "TypeVaccin",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Moderna" },
+                    { 2, "Pfizer" },
+                    { 3, "Johnson & Johnson" },
+                    { 4, "AstraZeneca" }
                 });
 
             migrationBuilder.CreateIndex(

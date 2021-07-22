@@ -1,9 +1,11 @@
+using Adopt1Dev.ASP.Tools;
 using Labo.ASP.Models;
 using Labo.ASP.Models.Forms;
 using Labo.ASP.Services;
 using Labo.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,6 +31,18 @@ namespace Labo.ASP
         {
             services.AddControllersWithViews();
 
+            services.AddSession(
+                options => {
+                    options.IdleTimeout = TimeSpan.FromMinutes(15);
+                    options.Cookie.Name = "VaccinCookie";
+                    options.Cookie.HttpOnly = true; //Important à mettre / Empecher l'utilisation du cookie coté client si true                 
+                }
+                );
+
+            //Injection pour permettre l'utilisation des sessions dans les classes non mvc
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+
             services.AddScoped<DataContext>();
             services.AddScoped<IService<CentreModel, CentreForm>, CentreService>();
             services.AddScoped<IService<AdressModel, AdressForm>, AdressService>();
@@ -53,6 +67,10 @@ namespace Labo.ASP
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseSession();
+            SessionUtils.Services = app.ApplicationServices;
+
 
             app.UseRouting();
 

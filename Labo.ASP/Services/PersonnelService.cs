@@ -1,5 +1,6 @@
 ﻿using Labo.ASP.Models;
 using Labo.ASP.Models.Forms;
+using Labo.ASP.Tools;
 using Labo.DAL;
 using Labo.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -47,17 +48,85 @@ namespace Labo.ASP.Services
 
         public PersonnelForm GetById(int id)
         {
-            throw new NotImplementedException();
+            Personnel toFind = _dc.Personnels.Find(id); 
+
+            if (toFind != null)
+            {
+                return new PersonnelForm 
+                {
+                    Id = toFind.Id,
+                    FirstName = toFind.FirstName,
+                    LastName = toFind.LastName,
+                    Inami = toFind.Inami,
+                    GradeId = toFind.GradeId,
+                    CentreId = toFind.CentreId,
+                    //PasswordIn = toFind.Password,
+                    Salt = toFind.Salt
+                };
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public void Insert(PersonnelForm form)
         {
-            throw new NotImplementedException();
+            PersonnelModel model = new PersonnelModel()
+            {
+                FirstName = form.FirstName,
+                LastName = form.LastName,
+                Id = form.Id,
+                Inami = form.Inami,
+                PasswordIn = form.PasswordIn,
+                CentreId = form.CentreId,
+                GradeId = form.GradeId
+            };
+
+            Personnel entity = new Personnel()
+            {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Password = model.PasswordOut, 
+                Inami = model.Inami,
+                CentreId = model.CentreId,
+                GradeId = model.GradeId
+            };
+
+            _dc.Personnels.Add(entity);
+            _dc.SaveChanges();
+
+            //PErmet de mettre l'id calculé par la db dans l'objet de départ (form)
+            form.Id = entity.Id;
         }
 
         public void Update(PersonnelForm form)
         {
             throw new NotImplementedException();
+        }
+
+        public int Connect(ConnexionForm form)
+        {
+            Personnel toCheck = _dc.Personnels.Find(form.Id);
+            bool coOk = false; int centreId = 0;
+
+            PasswordHash ph = new PasswordHash();
+            byte[] pwd = ph.HashMe(form.Password);
+
+            //check password
+
+            for (int i = 0; i < (toCheck.Password.Length); i++)
+            {
+                if (toCheck.Password[i] == pwd[i])
+                {
+                    coOk = true;
+                }
+                else return 0;                
+            }
+ 
+            if(coOk == true) { centreId = toCheck.CentreId; }
+            return centreId;
+        
         }
     }
 }

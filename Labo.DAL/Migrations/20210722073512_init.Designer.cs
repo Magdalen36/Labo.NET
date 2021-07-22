@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Labo.DAL.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210720101448_init")]
+    [Migration("20210722073512_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -64,6 +64,9 @@ namespace Labo.DAL.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("CalendrierJourId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Heure")
                         .HasColumnType("int");
 
                     b.Property<int>("Time")
@@ -164,6 +167,28 @@ namespace Labo.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Grade");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Médecin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Infirmier"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Sécurité"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Bénévole"
+                        });
                 });
 
             modelBuilder.Entity("Labo.DAL.Entities.HeureOuverture", b =>
@@ -384,6 +409,28 @@ namespace Labo.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TypeVaccin");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Moderna"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Pfizer"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Johnson & Johnson"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "AstraZeneca"
+                        });
                 });
 
             modelBuilder.Entity("Labo.DAL.Entities.CalendrierHeure", b =>

@@ -5,15 +5,10 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Labo.ASP.Models
+namespace Labo.ASP.Tools
 {
-    public class PersonnelModel
+    public class PasswordHash
     {
-        public int Id { get; set; }
-        public string LastName { get; set; }
-        public string FirstName { get; set; }
-        public long? Inami { get; set; }
-
         public byte[] PasswordOut
         {
             get
@@ -21,20 +16,10 @@ namespace Labo.ASP.Models
                 return HashMe(PasswordIn);
             }
         }
-
         public string PasswordIn { get; set; }
 
-        //public string Salt { get; set; }
-
-        public string NomGrade { get; set; }
-        public int GradeId { get; set; }
-
-        public int CentreId { get; set; }
-        public string NomCentre { get; set; }
-
-        public byte[] HashMe(string passwordIn)
+        public byte[] HashMe(string passwordIn) //attention, en private normalement
         {
-
             byte[] data = Encoding.UTF8.GetBytes(passwordIn);
             byte[] result;
             SHA512 shaM = new SHA512Managed();
