@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Labo.DAL.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210722073512_init")]
+    [Migration("20210722141919_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -228,13 +228,13 @@ namespace Labo.DAL.Migrations
                     b.Property<int>("CalendrierHeureId")
                         .HasColumnType("int");
 
-                    b.Property<int>("LotVaccinId")
+                    b.Property<int?>("LotVaccinId")
                         .HasColumnType("int");
 
                     b.Property<int>("PatientId")
                         .HasColumnType("int");
 
-                    b.Property<int>("PersonnelId")
+                    b.Property<int?>("PersonnelId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -370,7 +370,7 @@ namespace Labo.DAL.Migrations
                     b.Property<int>("GradeId")
                         .HasColumnType("int");
 
-                    b.Property<long>("Inami")
+                    b.Property<long?>("Inami")
                         .HasMaxLength(11)
                         .HasColumnType("bigint")
                         .IsFixedLength(true);
@@ -498,9 +498,7 @@ namespace Labo.DAL.Migrations
 
                     b.HasOne("Labo.DAL.Entities.LotVaccin", "LotVaccin")
                         .WithMany()
-                        .HasForeignKey("LotVaccinId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("LotVaccinId");
 
                     b.HasOne("Labo.DAL.Entities.Patient", "Patient")
                         .WithMany("Injections")
@@ -510,9 +508,7 @@ namespace Labo.DAL.Migrations
 
                     b.HasOne("Labo.DAL.Entities.Personnel", "Personnel")
                         .WithMany()
-                        .HasForeignKey("PersonnelId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PersonnelId");
 
                     b.Navigation("CalendrierHeure");
 

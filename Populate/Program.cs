@@ -38,22 +38,22 @@ namespace Populate
             //}
 
             //RAJOUTER LES CALENDRIERS HEURES
-            //PopulateCalHeure pc = new PopulateCalHeure();
-            //DataContext _dc = new DataContext();
-            //pc.InsertCalendar(_dc);
+            PopulateCalHeure pc = new PopulateCalHeure();
+            DataContext _dc = new DataContext();
+            pc.InsertCalendar(_dc);
 
             //PASSWORD HASH
-            string pw = "test1234=";
-            PasswordHash ph = new PasswordHash();
-            byte[] pwh = ph.HashMe(pw);
+            //string pw = "test1234=";
+            //PasswordHash ph = new PasswordHash();
+            //byte[] pwh = ph.HashMe(pw);
 
-            string pwhs ="";
-            foreach (var item in pwh)
-            {
-                pwhs += item;
-            }
+            //string pwhs ="";
+            //foreach (var item in pwh)
+            //{
+            //    pwhs += item;
+            //}
 
-            Console.WriteLine(pwhs);
+            //Console.WriteLine(pwhs);
         }
     }
 }

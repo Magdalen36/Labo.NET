@@ -55,12 +55,14 @@ namespace Labo.DAL
 
             ////modelBuilder.ApplyConfiguration(new DataSetAdress());
             ////modelBuilder.ApplyConfiguration(new DataSetPersonnel());
-            ///
+
             modelBuilder.ApplyConfiguration(new DataSetFournisseur());
             modelBuilder.ApplyConfiguration(new DataSetCentre());
             modelBuilder.ApplyConfiguration(new DataSetHeureOuverture());
             modelBuilder.ApplyConfiguration(new DataSetLotVaccin());
             modelBuilder.ApplyConfiguration(new DataSetCalendrierJour());
+
+            modelBuilder.ApplyConfiguration(new DataSetInjection());
         }
     }
 }

@@ -166,7 +166,7 @@ namespace Labo.DAL.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Inami = table.Column<long>(type: "bigint", fixedLength: true, maxLength: 11, nullable: false),
+                    Inami = table.Column<long>(type: "bigint", fixedLength: true, maxLength: 11, nullable: true),
                     Password = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     Salt = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     GradeId = table.Column<int>(type: "int", nullable: false),
@@ -249,8 +249,8 @@ namespace Labo.DAL.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PatientId = table.Column<int>(type: "int", nullable: false),
                     CalendrierHeureId = table.Column<int>(type: "int", nullable: false),
-                    PersonnelId = table.Column<int>(type: "int", nullable: false),
-                    LotVaccinId = table.Column<int>(type: "int", nullable: false)
+                    PersonnelId = table.Column<int>(type: "int", nullable: true),
+                    LotVaccinId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -265,7 +265,7 @@ namespace Labo.DAL.Migrations
                         column: x => x.LotVaccinId,
                         principalTable: "LotVaccin",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Injection_Patient_PatientId",
                         column: x => x.PatientId,
@@ -276,7 +276,7 @@ namespace Labo.DAL.Migrations
                         column: x => x.PersonnelId,
                         principalTable: "Personnel",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(

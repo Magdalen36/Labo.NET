@@ -14,7 +14,7 @@ namespace Labo.DAL.DataSet
         public void Configure(EntityTypeBuilder<CalendrierJour> builder)
         {
 
-            DateTime today = DateTime.Now;
+            DateTime today = new DateTime(2021, 07, 22);
             int centreId = 1;
             
             for (int i = 1; i < 100; i++)
@@ -29,7 +29,7 @@ namespace Labo.DAL.DataSet
            );
             }
 
-            DateTime today2 = DateTime.Now; //pas le mercredi
+            DateTime today2 = new DateTime(2021, 07, 22); //pas le mercredi
 
             for (int i = 100; i < 200; i++)
             {
@@ -47,7 +47,7 @@ namespace Labo.DAL.DataSet
                 }               
             }
 
-            DateTime today3 = DateTime.Now; //pas les samedi et dimanche
+            DateTime today3 = new DateTime(2021, 07, 22); //pas les samedi et dimanche
 
             for (int i = 200; i < 300; i++)
             {

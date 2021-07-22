@@ -16,10 +16,10 @@ namespace Labo.DAL.Entities
         public int CalendrierHeureId { get; set; }
         public virtual CalendrierHeure CalendrierHeure { get; set; }
 
-        public int PersonnelId { get; set; }
+        public int? PersonnelId { get; set; }
         public virtual Personnel Personnel { get; set; }
 
-        public int LotVaccinId { get; set; }
+        public int? LotVaccinId { get; set; }
         public virtual LotVaccin LotVaccin { get; set; }
     }
 }

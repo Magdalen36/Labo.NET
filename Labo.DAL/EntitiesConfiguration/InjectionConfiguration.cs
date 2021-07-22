@@ -15,6 +15,9 @@ namespace Labo.DAL.EntitiesConfiguration
         {
             builder.ToTable(nameof(Injection));
             builder.HasKey(i => i.Id);
+
+            builder.Property(p => p.PatientId).IsRequired(); 
+            builder.Property(p => p.CalendrierHeureId).IsRequired(); 
         }
     }
 }
