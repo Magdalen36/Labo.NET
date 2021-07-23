@@ -15,6 +15,7 @@ namespace Labo.ASP.Models.Forms
         public string Salt { get; set; }
 
         public int GradeId { get; set; }
+        public string GradeName { get; set; }
 
         public int CentreId { get; set; }
     }

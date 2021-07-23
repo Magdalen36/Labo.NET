@@ -6,55 +6,32 @@
 
 <h1>Liste du personnel du centre</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<br />
+@*<div>
+    <a asp-action="Index">Retour</a>
+</div>
+<br />*@
+
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Inami)
-            </th>
-            <th>
-                Grade
-            </th>
-            <th></th>
-        </tr>
-    </thead>
+
     <tbody>
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
         <tr>
+
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
+                @item.FirstName @item.LastName
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Inami)
-            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.NomGrade)
             </td>
 
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.DisplayFor(modelItem => item.Inami)
             </td>
+
+
         </tr>
-}
+    }
     </tbody>
 </table>

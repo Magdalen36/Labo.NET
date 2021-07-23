@@ -26,6 +26,9 @@ namespace Labo.DAL
         public DbSet<Adress> Adresses { get; set; }
         public DbSet<HeureOuverture> HeureOuvertures { get; set; }
 
+        //constructeur ajouté pour l'api
+        //public DataContext(DbContextOptions<DataContext> options): base(options) { }
+
         private readonly string _defaultConnectionString = @"Server=localhost;Database=LaboVaccin;Integrated Security=true";
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

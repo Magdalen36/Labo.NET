@@ -12,17 +12,17 @@ namespace Labo.ASP.ViewComponents
     public class RandomUserViewComponent: ViewComponent
     {
 
-        private readonly string url = "https://randomuser.me/api";
+        //private readonly string url = "https://randomuser.me/api";
 
-        public IViewComponentResult Invoke()
-        {
-            using (HttpClient client = new HttpClient())
-            {
-                HttpResponseMessage message = client.GetAsync(url).Result;
-                string json = message.Content.ReadAsStringAsync().Result;
-                RandomUserModel model = JsonConvert.DeserializeObject<RandomUserModel>(json);
-                return View(model);
-            }           
-        } 
+        //public IViewComponentResult Invoke()
+        //{
+        //    using (HttpClient client = new HttpClient())
+        //    {
+        //        HttpResponseMessage message = client.GetAsync(url).Result;
+        //        string json = message.Content.ReadAsStringAsync().Result;
+        //        RandomUserModel model = JsonConvert.DeserializeObject<RandomUserModel>(json);
+        //        return View(model);
+        //    }           
+        //} 
     }
 }

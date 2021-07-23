@@ -1,4 +1,5 @@
 ﻿using Labo.ASP.Models;
+using Labo.ASP.Tools;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -20,6 +21,7 @@ namespace Labo.ASP.Controllers
 
         public IActionResult Index()
         {
+            TempData["isLogged"] = HttpContext.Session.Get<bool>("IsLogged");
             return View();
         }
 

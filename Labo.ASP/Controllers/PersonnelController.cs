@@ -14,15 +14,26 @@ namespace Labo.ASP.Controllers
     {
 
         private readonly IService<PersonnelModel, PersonnelForm> _servicePersonnel;
+        private readonly IService<InjectionModel, InjectionForm> _serviceInjection;
 
-        public PersonnelController(IService<PersonnelModel, PersonnelForm> sp)
+        public PersonnelController(IService<PersonnelModel, PersonnelForm> sp , IService<InjectionModel, InjectionForm> s)
         {
             _servicePersonnel = sp;
+            _serviceInjection = s;
         }
 
         public IActionResult Index()
         {
-            return View();
+            TempData["isLogged"] = HttpContext.Session.Get<bool>("IsLogged");
+
+            PersonnelForm form = _servicePersonnel.GetById(HttpContext.Session.Get<int>("UserId"));
+            return View(form);
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Set<bool>("IsLogged", false);
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult Connexion()
@@ -42,7 +53,9 @@ namespace Labo.ASP.Controllers
                 {
                     HttpContext.Session.Set<bool>("IsLogged", true);
                     HttpContext.Session.Set<int>("UserId", form.Id);
-                    return RedirectToAction("ListePersonnelCentre", "Personnel", new { id = centreId });
+                    HttpContext.Session.Set<int>("CentreId", centreId);
+                    //return RedirectToAction("ListePersonnelCentre", new { id = centreId });
+                    return RedirectToAction("Index", new { id = form.Id });
                 }
                 else
                 {
@@ -58,10 +71,12 @@ namespace Labo.ASP.Controllers
         }
 
 
-        public IActionResult ListePersonnelCentre([FromRoute] int id)
+        public IActionResult ListePersonnelCentre()
         {
+            TempData["isLogged"] = HttpContext.Session.Get<bool>("IsLogged");
+
             IEnumerable<PersonnelModel> model = _servicePersonnel.GetAll();
-            IEnumerable<PersonnelModel> modelCentre = model.Where(m => m.CentreId == id);
+            IEnumerable<PersonnelModel> modelCentre = model.Where(m => m.CentreId == HttpContext.Session.Get<int>("CentreId"));
 
             return View(modelCentre);
         }
@@ -78,17 +93,25 @@ namespace Labo.ASP.Controllers
             {
                 _servicePersonnel.Insert(form);
                 HttpContext.Session.Set<int>("UserId", form.Id);
-                //TempData["succes"] = "Insertion effectuée";
+                TempData["succes"] = "Insertion effectuée";
                 //HttpContext.Session.Set<bool>("IsLogged", true);
 
 
-                return RedirectToAction("Personnel", "ListePersonnelCentre");
+                return RedirectToAction("Connexion", "Personnel");
             }
             else
             {
                 TempData["error"] = "Formulaire invalide";
                 return View(form);
             }
+        }
+
+        public IActionResult GetInjection(int id) {
+
+            TempData["isLogged"] = HttpContext.Session.Get<bool>("IsLogged");
+
+            InjectionForm form = _serviceInjection.GetById(id);
+            return View(form);
         }
 
     }

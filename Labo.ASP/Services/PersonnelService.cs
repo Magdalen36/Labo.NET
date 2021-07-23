@@ -33,7 +33,7 @@ namespace Labo.ASP.Services
 
         public IEnumerable<PersonnelModel> GetAll()
         {
-            IEnumerable<Personnel> personnels = _dc.Personnels.Include("Grade").Include("Centre");
+            IEnumerable<Personnel> personnels = _dc.Personnels.Include("Grade").Include("Centre").OrderBy(g => g.GradeId);
             return personnels.Select(p => new PersonnelModel
             {
                 Id = p.Id, 
@@ -48,20 +48,32 @@ namespace Labo.ASP.Services
 
         public PersonnelForm GetById(int id)
         {
-            Personnel toFind = _dc.Personnels.Find(id); 
+            Personnel toFind = _dc.Personnels.Find(id);
+
+            string gradeName = "";
+            
 
             if (toFind != null)
             {
+
+                switch (toFind.GradeId)
+                {
+                    case 1: gradeName = "Médecin"; break;
+                    case 2: gradeName = "Infirmier"; break;
+                    case 3: gradeName = "Sécurité"; break;
+                    case 4: gradeName = "Bénévole"; break;
+                }
+
                 return new PersonnelForm 
                 {
                     Id = toFind.Id,
                     FirstName = toFind.FirstName,
                     LastName = toFind.LastName,
                     Inami = toFind.Inami,
-                    GradeId = toFind.GradeId,
+                    GradeName = gradeName,
                     CentreId = toFind.CentreId,
                     //PasswordIn = toFind.Password,
-                    Salt = toFind.Salt
+                    Salt = toFind.Salt,
                 };
             }
             else

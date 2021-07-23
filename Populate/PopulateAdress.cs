@@ -38,9 +38,6 @@ namespace Populate
                 dc.Adresses.Add(am);
                 dc.SaveChanges();
             }
-
-
-
         }
     }
 }

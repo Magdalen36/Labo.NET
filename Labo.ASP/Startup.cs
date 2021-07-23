@@ -49,6 +49,7 @@ namespace Labo.ASP
             services.AddScoped<IService<HeureOuvertureModel, HeureOuvertureForm>, HeureOuvertureService>();
             services.AddScoped<IService<PersonnelModel, PersonnelForm>, PersonnelService>();
             services.AddScoped<IService<LotVaccinModel, LotVaccinForm>, LotVaccinService>();
+            services.AddScoped<IService<InjectionModel, InjectionForm>, InjectionService>();
 
         }
 

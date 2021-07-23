@@ -1,0 +1,20 @@
+﻿@model Labo.ASP.Models.Forms.PersonnelForm
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<div>
+    <h4>@Model.FirstName @Model.LastName <span> - </span> @Model.GradeName</h4>
+    <hr />
+
+</div>
+
+<div>
+    <a class="nav-link text-dark" asp-area="" asp-controller="Personnel" asp-action="ListePersonnelCentre">Liste du personnel du centre</a>
+</div>
+<div>
+<a class="nav-link text-dark" asp-area="" asp-controller="Personnel" asp-action="ListePersonnelCentre">Gestion des injections</a>
+</div>
