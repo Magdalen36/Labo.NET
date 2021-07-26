@@ -16,7 +16,7 @@ namespace Labo.ASP.Controllers
         private readonly IService<PersonnelModel, PersonnelForm> _servicePersonnel;
         private readonly IService<InjectionModel, InjectionForm> _serviceInjection;
 
-        public PersonnelController(IService<PersonnelModel, PersonnelForm> sp , IService<InjectionModel, InjectionForm> s)
+        public PersonnelController(IService<PersonnelModel, PersonnelForm> sp, IService<InjectionModel, InjectionForm> s)
         {
             _servicePersonnel = sp;
             _serviceInjection = s;
@@ -49,7 +49,7 @@ namespace Labo.ASP.Controllers
             {
                 int centreId = (_servicePersonnel as PersonnelService).Connect(form);
 
-                if(centreId != 0)
+                if (centreId != 0)
                 {
                     HttpContext.Session.Set<bool>("IsLogged", true);
                     HttpContext.Session.Set<int>("UserId", form.Id);
@@ -106,13 +106,62 @@ namespace Labo.ASP.Controllers
             }
         }
 
-        public IActionResult GetInjection(int id) {
+        public IActionResult GetInjection(int id)
+        {
 
             TempData["isLogged"] = HttpContext.Session.Get<bool>("IsLogged");
 
             InjectionForm form = _serviceInjection.GetById(id);
+            HttpContext.Session.Set<int>("InjectionId", id);
             return View(form);
         }
 
+        public IActionResult GetPatient()
+        {
+            TempData["isLogged"] = HttpContext.Session.Get<bool>("IsLogged");
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult GetPatient(PatientForm form)
+        {
+            TempData["isLogged"] = HttpContext.Session.Get<bool>("IsLogged");
+
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("GetInjection", "Personnel", new { id = form.Id });
+            }
+            else
+            {
+                TempData["error"] = "Formulaire invalide";
+                return View(form);
+            }
+
+        }
+
+        public IActionResult Update()
+        {
+            TempData["isLogged"] = HttpContext.Session.Get<bool>("IsLogged");
+            InjectionForm form = _serviceInjection.GetById(HttpContext.Session.Get<int>("InjectionId"));
+            if (form == null) return NotFound();
+            return View(form);
+        }
+
+        [HttpPost]
+        public IActionResult Update(InjectionForm form)
+        {
+            TempData["isLogged"] = HttpContext.Session.Get<bool>("IsLogged");
+
+            if (ModelState.IsValid)
+            {
+                (_serviceInjection as InjectionService).Update(form, HttpContext.Session.Get<int>("UserId"));
+                TempData["success"] = "Modification effectuée";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(form);
+            }
+        }
     }
 }

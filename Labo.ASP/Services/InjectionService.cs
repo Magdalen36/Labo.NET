@@ -2,6 +2,8 @@
 using Labo.ASP.Models.Forms;
 using Labo.DAL;
 using Labo.DAL.Entities;
+using Labo.ASP.Tools;
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -30,9 +32,15 @@ namespace Labo.ASP.Services
             throw new NotImplementedException();
         }
 
-        public InjectionForm GetById(int id) //Par l'id du patient
+        public IEnumerable<Injection> GetAllByPatientId(int id)
         {
-            Injection toFind = _dc.Injections.SingleOrDefault(p => p.PatientId == id);
+            IEnumerable<Injection> injections = _dc.Injections.Where(i => i.PatientId == id);
+            return injections;
+        }
+
+        public InjectionForm GetById(int id) //Par l'id de l'injection (fournie lors de l'inscription)
+        {
+            Injection toFind = _dc.Injections.SingleOrDefault(p => p.Id == id);
             Patient patient = _dc.Patients.Find(toFind.PatientId);
             string patientName = patient.FirstName + " " + patient.LastName;  
             
@@ -69,6 +77,15 @@ namespace Labo.ASP.Services
         public void Insert(InjectionForm form)
         {
             throw new NotImplementedException();
+        }
+
+        public void Update(InjectionForm form, int personnelId)
+        {
+            Injection i = _dc.Injections.Find(form.Id);
+            i.LotVaccinId = form.LotVaccinId;
+            i.PersonnelId = personnelId;
+
+            _dc.SaveChanges();
         }
 
         public void Update(InjectionForm form)
